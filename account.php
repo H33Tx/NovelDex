@@ -3,7 +3,7 @@
 require "load.php";
 $page = "account";
 
-if ($logged == false) {
+if ($logged == false && $level->login() && $level->signup()) {
     $error = false;
     if (isset($_POST["login"])) {
         $return = $user->login($_POST["username"], $_POST["password"]);
@@ -39,9 +39,11 @@ if ($logged == false) {
 include "themes/{$thme}/parts/header.php";
 echo $core->title("Account", $config["seperator"], $config["title"]);
 include "themes/{$thme}/parts/menu.php";
-if ($logged == false) {
+if ($logged == false && $level->login() && $level->signup()) {
     include "themes/{$thme}/render/login.php";
-} else {
+} elseif ($logged == true) {
     include "themes/{$thme}/render/account.php";
+} else {
+    include "themes/{$thme}/render/error.php";
 }
 include "themes/{$thme}/parts/footer.php";

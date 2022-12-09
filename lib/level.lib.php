@@ -44,6 +44,12 @@ class Level
         $this->canComment = $level["can_comment"] == 1 ? true : false;
         $this->canManageComment = $level["can_manage_comment"] == 1 ? true : false;
         $this->banned = $level["banned"] == 1 ? true : false;
+        $this->special = $level["special"] == 1 ? true : false;
+    }
+
+    function getLevel()
+    {
+        return $this->id;
     }
 
     function getName()
@@ -78,7 +84,7 @@ class Level
 
     function addTitle()
     {
-        return $this->canRequestTitle;
+        return $this->canAddTitle;
     }
 
     function editTitle()
@@ -129,5 +135,10 @@ class Level
     function isBanned()
     {
         return $this->banned;
+    }
+
+    function isSpecial()
+    {
+        return $this->special;
     }
 }

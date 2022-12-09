@@ -1,7 +1,7 @@
 <?php
 
 require "load.php";
-$title = new Title(clean($_GET["slug"]));
+$title = new Title(clean($_GET["slug"] ?? $_GET["id"]));
 $page = "titles";
 
 include "themes/{$thme}/parts/header.php";

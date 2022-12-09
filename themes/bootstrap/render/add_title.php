@@ -1,6 +1,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.php">Index</a></li>
+        <li class="breadcrumb-item"><a href="titles.php">Titles</a></li>
         <li class="breadcrumb-item active" aria-current="page">Add Title</li>
     </ol>
 </nav>

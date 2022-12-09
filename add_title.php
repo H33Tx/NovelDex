@@ -2,9 +2,9 @@
 
 require "load.php";
 $page = "titles";
-if ($logged == false) header("Location: account.php") && exit;
+if (!$logged || (!$level->addTitle() && !$level->reqTitle())) header("Location: account.php") && exit;
 
-if ($logged == true && ($level->addTitle() == true || $level->reqTitle() == true)) {
+if ($logged && ($level->addTitle() || $level->reqTitle())) {
     $error = false;
     if (isset($_POST["addTitle"])) {
         $name = clean($_POST["name"]);

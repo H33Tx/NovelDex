@@ -7,7 +7,6 @@ function clean($data)
     $data = strip_tags($data);
     $data = stripslashes($data);
     $data = trim($data);
-    $data = str_replace("'", "\'", $data);
     return $data;
 }
 

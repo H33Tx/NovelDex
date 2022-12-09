@@ -36,8 +36,7 @@ $db = new MysqliDb([
 $user = new User();
 $Parsedown = new Parsedown();
 require "core/session.php";
-$level = $logged ? $account["level"] : $config["level"]["guest"];
-$level = new Level($level);
+$level = new Level($logged ? $account["level"] : $config["level"]["guest"]);
 $editor = new Editor();
 
 

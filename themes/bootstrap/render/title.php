@@ -9,8 +9,23 @@
 <h2><?= $title->getName() ?></h2>
 <p><?= $Parsedown->text($title->getSynopsis()) ?></p>
 
-<?php if (!empty($chapters)) { ?>
-    <ul class="list-group">
+<?php if ($level->editTitle() || $level->addChap()) { ?>
+    <div class="row">
+        <?php if ($level->addChap()) { ?>
+            <div class="col">
+                <a class="col-12 btn btn-primary" href="add_chapter.php?slug=<?= $title->getSlug() ?>">Add Chapter</a>
+            </div>
+        <?php } ?>
+        <?php if ($level->editTitle()) { ?>
+            <div class="col">
+                <a class="col-12 btn btn-primary" href="edit_title.php?slug=<?= $title->getSlug() ?>">Edit Title</a>
+            </div>
+        <?php } ?>
+    </div>
+<?php } ?>
+
+<ul class="list-group mt-3">
+    <?php if (!empty($chapters)) { ?>
         <?php foreach ($chapters as $chapter) { ?>
             <li class="list-group-item">
                 <a href="read.php?slug=<?= $title->getSlug() ?>&lang=<?= $chapter["lang"] ?>#chapter_<?= $chapter["id"] ?>">[Read]</a> <?= chNo($chapter["number"]) ?> - [<?= $chapter["lang"] ?>] <?= !empty($chapter["name"]) ? $chapter["name"] : "Unknown" ?>
@@ -20,7 +35,9 @@
                 </span>
             </li>
         <?php } ?>
-    </ul>
-<?php } else { ?>
-    <p>This Title has no chapters available.</p>
-<?php } ?>
+    <?php } else { ?>
+        <li class="list-group-item">
+            This Title has no chapters available.
+        </li>
+    <?php } ?>
+</ul>
