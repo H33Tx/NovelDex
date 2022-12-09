@@ -24,7 +24,7 @@
         <label for="synopsis" class="form-label">Synposis</label>
         <textarea type="text" class="form-control" id="synopsis" name="synopsis"><?= isset($_POST["synopsis"]) ? clean($_POST["synopsis"]) : "" ?><?= $title->getSynopsis() ?></textarea>
     </div>
-    <button type="submit" class="btn btn-primary" style="width: 100%;" name="addTitle">Add Title</button>
+    <button type="submit" class="btn btn-primary" style="width: 100%;" name="addTitle">Edit Title</button>
     <?php if ($error == true) { ?>
         <p class="text-center" style="color: red;"><b><?= $return ?></b></p>
     <?php } ?>
